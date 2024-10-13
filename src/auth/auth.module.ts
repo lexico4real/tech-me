@@ -2,12 +2,13 @@ import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersRepository } from './users.repository';
+import { UsersRepository } from './user.repository';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtStrategy } from './jwt.strategy';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import * as config from 'config';
+import { RoleRepository } from '../role/role.repository';
 
 const jwtConfig = config.get('jwt');
 
@@ -28,10 +29,10 @@ const jwtConfig = config.get('jwt');
         },
       }),
     }),
-    TypeOrmModule.forFeature([UsersRepository]),
+    TypeOrmModule.forFeature([UsersRepository, RoleRepository]),
   ],
   providers: [AuthService, JwtStrategy],
   controllers: [AuthController],
-  exports: [JwtStrategy, PassportModule],
+  exports: [JwtStrategy, PassportModule, JwtModule, AuthService],
 })
 export class AuthModule {}

@@ -1,3 +1,8 @@
 export interface JwtPayload {
-  username: string;
+  id: string;
+  email: string;
+  role: any;
+  firstName: string;
+  lastName: string;
+  image: string;
 }

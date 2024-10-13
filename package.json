@@ -49,6 +49,7 @@
     "request": "^2.88.2",
     "rimraf": "^3.0.2",
     "rxjs": "^6.0.0",
+    "skeleton": "file:",
     "speakeasy": "^2.0.0",
     "typeorm": "^0.2.7"
   },

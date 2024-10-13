@@ -1,13 +1,14 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { HealthModule } from './health/health.module';
-import { BarcodeModule } from './barcode/barcode.module';
 import { typeOrmConfig } from '../config/orm/global';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { RoleModule } from './role/role.module';
+import { PermissionModule } from './permission/permission.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     ScheduleModule.forRoot(),
     AuthModule,
     HealthModule,
-    BarcodeModule,
+    RoleModule,
+    PermissionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
